@@ -23,7 +23,10 @@ class _HomeState extends State<Home> {
           gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              colors: [Colors.cyan, Colors.green]),
+              colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).secondaryHeaderColor
+              ]),
         ),
         alignment: Alignment.center,
         child: Column(
@@ -33,7 +36,7 @@ class _HomeState extends State<Home> {
             Text(
               'Socytal',
               style: TextStyle(
-                fontFamily: "Signatra",
+                fontFamily: "fonts/Signatra.ttf",
                 fontSize: 90.0,
                 color: Colors.white,
               ),
@@ -45,7 +48,7 @@ class _HomeState extends State<Home> {
                 height: 60,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/google sign in.png'),
+                    image: AssetImage('images/homescreen/google sign in.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
