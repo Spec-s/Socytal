@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "657438175042",
+    "project_id": "socytal",
+    "storage_bucket": "socytal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657438175042:android:d01dcadcb97168eee522db",
+        "android_client_info": {
+          "package_name": "com.specs.socytal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657438175042-417ijpb4dudvkimdfuem7sgkjrf076uf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.specs.socytal",
+            "certificate_hash": "968a4b4fff23bd2dd0ecc167ea22c9ba2bcae0d0"
+          }
+        },
+        {
+          "client_id": "657438175042-kitthptlj81us8mh27ng63mlkt5naaoe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvN2O0_pwZVA66TM9qH1jlRfCSdwHmS0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657438175042-4caret6sf1cnirooqchgus5gruef8c7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
