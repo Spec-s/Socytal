@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn =
+    GoogleSignIn(); //initializing the google sign in feature
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,11 +16,58 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool isAuth = false;
 
+  @override
+  void initState() {
+    super.initState();
+    // this function runs at the initilization of the application and does the check automatically
+    googleSignIn.onCurrentUserChanged.listen((account) {
+      handleSignIn(account!);
+    }, onError: (err) {
+      print('Error signing in: $err');
+    });
+
+    // reauthenticate user when app opens
+    googleSignIn.signInSilently(suppressErrors: false).then((account) {
+      handleSignIn(account);
+    }).catchError((err) {
+      print('Error signing in: $err');
+    });
+  }
+
+  handleSignIn(GoogleSignInAccount? account) {
+    if (account != null) {
+      print('user signed in as: $account');
+      setState(() {
+        isAuth = true;
+      });
+    } else {
+      setState(() {
+        isAuth = false;
+      });
+    }
+  }
+
+  googleLogin() {
+    // this function is used for sign in with google
+    GoogleSignIn().signIn();
+  }
+
+  logout() {
+    googleSignIn.signOut();
+  }
+
   Widget buildAuthScreen() {
-    return Text('Authenticated');
+    // screen will be displayed once the user is authenticated
+    return MaterialButton(
+      onPressed: logout,
+      color: Colors.red,
+      textColor: Colors.white,
+      child: Text('Logout'),
+    );
   }
 
   Scaffold buildUnAuthScreen() {
+    // screen to be shown if the user has not been authenticated
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -36,19 +87,19 @@ class _HomeState extends State<Home> {
             Text(
               'Socytal',
               style: TextStyle(
-                fontFamily: "fonts/Signatra.ttf",
+                fontFamily: "Signatra",
                 fontSize: 90.0,
                 color: Colors.white,
               ),
             ),
             GestureDetector(
-              onTap: () => print('sign in button was tapped'),
+              onTap: () => googleLogin(),
               child: Container(
                 width: 260.0,
                 height: 60,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/homescreen/google sign in.png'),
+                    image: AssetImage('images/google sign in.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
